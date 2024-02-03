@@ -1,0 +1,11 @@
+.ghost {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.block {
+  color: var(--secondary);
+  padding: 8px 16px;
+  background-color: var(--primary);
+  border-radius: 4px;
+}

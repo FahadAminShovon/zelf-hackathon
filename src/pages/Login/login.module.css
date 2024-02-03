@@ -1,0 +1,50 @@
+.container {
+  height: calc(100% - var(--header_footer_height));
+  width: 100%;
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow_card);
+}
+
+.loginWrapper {
+  width: min(90%, 1248px);
+  height: 400px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.placeholder {
+  background-color: #7505fb;
+}
+
+.loginContainer {
+  background-color: var(--secondary);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.registerBrand {
+  font-size: 24px;
+}
+
+.label {
+  display: flex;
+  gap: 8px;
+  accent-color: var(--primary);
+  border: 1px solid var(--text_grey);
+  padding: 12px 24px;
+  width: 70%;
+  border-radius: 4px;
+}
+
+.login {
+  width: 65%;
+  text-align: center;
+}
+
+.signIn {
+  color: var(--primary);
+}
