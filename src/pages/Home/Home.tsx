@@ -6,10 +6,12 @@ import { useData } from './useGetData';
 import { DataEntity } from './data.types';
 import { useDialog } from '../../hooks/useDialog';
 import ModalCard from '../../components/ModalCard/ModalCard';
+import Button from '../../components/Button/Button';
+import Footer from '../../components/Footer/Footer';
 
 const Home = () => {
   const {
-    data: { data = [] },
+    data: { data = [], total_contents },
     isLoading,
     error,
   } = useData();
@@ -34,6 +36,13 @@ const Home = () => {
         <Table data={data ?? []} setSelectedData={setSelectedData} />
       </div>
 
+      <div className={styles.allPostsContainer}>
+        <span className={styles.allPostsText}>All Posts</span>
+        <span className={styles.total}>{` (${total_contents ?? 0})`}</span>
+        <Button className={styles.viewAll} variant='ghost'>
+          VIEW ALL
+        </Button>
+      </div>
       <div className={styles.cardsContainer}>
         {data?.map((cardData) => (
           <ContentCard
@@ -48,6 +57,9 @@ const Home = () => {
           <ModalCard cardData={selectedData} onClose={hideDialog} />
         )}
       </dialog>
+      <div className={styles.footerContainer}>
+        <Footer />
+      </div>
     </div>
   );
 };

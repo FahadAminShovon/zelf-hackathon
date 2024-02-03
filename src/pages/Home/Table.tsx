@@ -23,6 +23,7 @@ const Table = ({ data, setSelectedData }: PropType) => {
           <th>Video/Image</th>
           <th>Creator</th>
           <th>Platform</th>
+          {/* took shortcut on sorting, need server side sorting as all content are not visible */}
           <th>Total Views</th>
           <th>Total Engagement</th>
           <th>Engagement Rate</th>
@@ -37,6 +38,7 @@ const Table = ({ data, setSelectedData }: PropType) => {
               <td className={styles.timeStamp}>
                 {formatDate(content.timestamp)}
               </td>
+              {/* took shortcut here, need to render svg depending on content form */}
               <td>{content.content_form}</td>
               <td>
                 <table>

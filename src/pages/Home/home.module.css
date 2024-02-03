@@ -9,3 +9,27 @@
   grid-template-columns: repeat(auto-fill, minmax(226px, 1fr));
   /* grid-template-columns: repeat(auto-fit, 80px); */
 }
+
+.allPostsContainer {
+  display: flex;
+  width: 100%;
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
+.allPostsText {
+  font-weight: 500;
+}
+
+.total {
+  color: var(--text_grey);
+  margin-left: 8px;
+}
+
+.viewAll {
+  margin-left: auto;
+}
+
+.footerContainer {
+  margin-top: 32px;
+}
