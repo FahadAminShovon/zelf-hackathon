@@ -1,3 +1,6 @@
+import SvgComment from '../../assets/SvgComment';
+import SvgLike from '../../assets/SvgLike';
+import SvgShare from '../../assets/SvgShare';
 import { DataEntity } from '../../pages/Home/data.types';
 import { formatNumber } from '../../utils/helper';
 import CreatorAvatar from '../CreatorAvatar/CreatorAvatar';
@@ -30,9 +33,18 @@ const ContentCard = ({ cardData, setSelectedData }: PropType) => {
         </div>
       </div>
       <div className={styles.engagementContainer}>
-        <span>{formatNumber(cardData.content.likes)}</span>
-        <span>{formatNumber(cardData.content.comments)}</span>
-        <span>{formatNumber(cardData.content.shares)}</span>
+        <span className={styles.engagement}>
+          <SvgLike />
+          {formatNumber(cardData.content.likes)}
+        </span>
+        <span className={styles.engagement}>
+          <SvgComment />
+          {formatNumber(cardData.content.comments)}
+        </span>
+        <span className={styles.engagement}>
+          <SvgShare />
+          {formatNumber(cardData.content.shares)}
+        </span>
       </div>
     </div>
   );
