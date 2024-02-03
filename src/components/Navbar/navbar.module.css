@@ -28,3 +28,10 @@
   align-items: center;
   gap: 8px;
 }
+
+.logo {
+  height: var(--header_footer_height);
+  width: auto;
+  line-height: 0;
+  margin-left: -32px;
+}
