@@ -15,6 +15,8 @@ export const useData = () => {
   const [data, setData] = useState(defaultTableData);
   const [error, setError] = useState();
 
+  console.log('data', data);
+
   useEffect(() => {
     let ignore = false;
     setIsLoading(true);

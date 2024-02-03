@@ -6,6 +6,7 @@ import {
 } from '../../utils/helper';
 import styles from './table.module.css';
 import CreatorAvatar from '../../components/CreatorAvatar/CreatorAvatar';
+import Platform from '../../components/Platform/Platform';
 
 type PropType = {
   data: DataEntity[];
@@ -49,7 +50,9 @@ const Table = ({ data, setSelectedData }: PropType) => {
                   </tbody>
                 </table>
               </td>
-              <td>{content.content_platform}</td>
+              <td>
+                <Platform platform={content.content_platform} />
+              </td>
               <td>{formatNumber(content.likes)}</td>
               <td>{formatNumber(content.total_engagement)}</td>
 

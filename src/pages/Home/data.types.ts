@@ -23,6 +23,8 @@ export interface Creator {
   follower_count: string;
   active_content_count?: string | null;
 }
+
+export type PlatformType = 'instagram' | 'tiktok';
 export interface Content {
   id: number;
   uuid: string;
@@ -33,7 +35,7 @@ export interface Content {
   title: string;
   text: string;
   thumbnail_url: string;
-  content_platform: string;
+  content_platform: PlatformType;
   content_type?: null;
   content_form: string;
   likes: number;

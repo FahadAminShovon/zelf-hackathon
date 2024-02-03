@@ -1,6 +1,7 @@
 import { DataEntity } from '../../pages/Home/data.types';
 import { formatNumber } from '../../utils/helper';
 import CreatorAvatar from '../CreatorAvatar/CreatorAvatar';
+import Platform from '../Platform/Platform';
 import styles from './contentCard.module.css';
 
 type PropType = {
@@ -25,6 +26,7 @@ const ContentCard = ({ cardData, setSelectedData }: PropType) => {
             <CreatorAvatar src={cardData.creator.profile_picture_url} />
           )}
           <span className={styles['line-clamp']}>{cardData.creator.name}</span>
+          <Platform platform={cardData.content.content_platform} />
         </div>
       </div>
       <div className={styles.engagementContainer}>

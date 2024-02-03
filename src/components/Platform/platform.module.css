@@ -1,0 +1,7 @@
+.container {
+  height: 20px;
+  width: 20px;
+  object-fit: cover;
+  overflow: hidden;
+  line-height: 0;
+}
