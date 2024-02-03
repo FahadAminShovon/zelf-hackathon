@@ -2,3 +2,10 @@
   margin-top: var(--vertical_gap);
   height: 100%;
 }
+
+.cardsContainer {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(226px, 1fr));
+  /* grid-template-columns: repeat(auto-fit, 80px); */
+}

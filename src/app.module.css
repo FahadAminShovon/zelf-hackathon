@@ -3,8 +3,13 @@
   background-color: var(--background_color);
 }
 
-.homeContainer {
-  margin-top: 32px;
-  padding-inline: var(--container_padding_x);
+.contentContainer {
+  overflow: auto;
   height: 100%;
+}
+
+.homeContainer {
+  padding-inline: var(--container_padding_x);
+  /* height: calc(100% - 122px); */
+  overflow: auto;
 }

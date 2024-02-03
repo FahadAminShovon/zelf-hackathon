@@ -1,0 +1,62 @@
+.container {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+.cardImage {
+  height: 100%;
+  width: 100%;
+}
+
+.thumbnail {
+  height: 280px;
+  object-fit: cover;
+  line-height: 0;
+  width: 100%;
+  border-radius: 4px;
+  filter: brightness(80%);
+  transition: filter 250ms;
+}
+
+.thumbnail:hover {
+  filter: brightness(100%);
+  transition: filter 600ms;
+}
+
+.thumbNailContainer {
+  width: 100%;
+  position: relative;
+}
+
+.creatorContainer {
+  position: absolute;
+  bottom: 0;
+  color: var(--secondary);
+  font-weight: 600;
+  padding: 12px;
+  display: flex;
+  gap: 12px;
+}
+
+.creatorThumbNail {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.engagementContainer {
+  display: flex;
+  gap: 12px;
+  color: #767b8a;
+  font-size: 12px;
+}

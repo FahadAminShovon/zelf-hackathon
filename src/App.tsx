@@ -3,7 +3,7 @@ import styles from './app.module.css';
 import NavBar from './components/Navbar/NavBar';
 import Home from './pages/Home/Home';
 import Login from './pages/Login';
-import Footer from './components/Footer/Footer';
+// import Footer from './components/Footer/Footer';
 
 function App() {
   const { isAuthenticated } = useAuth0();
@@ -11,9 +11,11 @@ function App() {
     <div className={styles.overAll}>
       <NavBar />
       {isAuthenticated && (
-        <div className={styles.homeContainer}>
-          <Home />
-          <Footer />
+        <div className={styles.contentContainer}>
+          <div className={styles.homeContainer}>
+            <Home />
+          </div>
+          {/* <Footer /> */}
         </div>
       )}
       {!isAuthenticated && <Login />}
