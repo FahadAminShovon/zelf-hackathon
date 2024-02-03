@@ -1,4 +1,5 @@
 import ContentCard from '../../components/ContentCard/ContentCard';
+import Table from './Table';
 import styles from './home.module.css';
 import { useData } from './useGetData';
 
@@ -15,6 +16,10 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
+      <div className={styles.tableContainer}>
+        <Table data={data ?? []} />
+      </div>
+
       <div className={styles.cardsContainer}>
         {data?.map((cardData) => (
           <ContentCard cardData={cardData} key={cardData.content.id} />

@@ -1,5 +1,6 @@
 import { DataEntity } from '../../pages/Home/data.types';
 import { formatNumber } from '../../utils/helper';
+import CreatorAvatar from '../CreatorAvatar/CreatorAvatar';
 import styles from './contentCard.module.css';
 
 type PropType = {
@@ -17,10 +18,7 @@ const ContentCard = ({ cardData }: PropType) => {
         </a>
         <div className={styles.creatorContainer}>
           {cardData.creator.profile_picture_url && (
-            <img
-              src={cardData.creator.profile_picture_url}
-              className={styles.creatorThumbNail}
-            />
+            <CreatorAvatar src={cardData.creator.profile_picture_url} />
           )}
           <span className={styles['line-clamp']}>{cardData.creator.name}</span>
         </div>

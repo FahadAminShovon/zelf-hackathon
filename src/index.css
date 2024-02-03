@@ -79,4 +79,15 @@ li {
   --container_padding_x: 100px;
   --vertical_gap: 32px;
   --header_footer_height: 66px;
+  --shadow_card: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  --text_grey: #767b8a;
+  --text_grey_light: #b3b5bd;
+  --text_grey_lighter: #e3e4e8;
+}
+
+th {
+  text-align: left;
+  font-weight: 400;
+  color: var(--text_grey_light);
 }
