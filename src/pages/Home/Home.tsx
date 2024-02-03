@@ -16,9 +16,14 @@ const Home = () => {
     error,
   } = useData();
 
-  const { setDialogRef, openDialog, hideDialog } = useDialog();
+  const { setDialogRef, openDialog, hideDialog: hideDialogMain } = useDialog();
 
   const [selectedData, setSelectedData] = useState<DataEntity | null>(null);
+
+  const hideDialog = () => {
+    hideDialogMain();
+    setSelectedData(null);
+  };
 
   useEffect(() => {
     if (selectedData) {
