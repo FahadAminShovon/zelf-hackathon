@@ -3,7 +3,7 @@ import ContentCard from '../../components/ContentCard/ContentCard';
 import Table from './Table';
 import styles from './home.module.css';
 import { useData } from './useGetData';
-import { DataEntity } from './data.types';
+import { ResultsEntity } from './data.types';
 import { useDialog } from '../../hooks/useDialog';
 import ModalCard from '../../components/ModalCard/ModalCard';
 import Button from '../../components/Button/Button';
@@ -11,14 +11,14 @@ import Footer from '../../components/Footer/Footer';
 
 const Home = () => {
   const {
-    data: { data = [], total_contents },
+    data: { results: data = [], count: total_contents },
     isLoading,
     error,
   } = useData();
 
   const { setDialogRef, openDialog, hideDialog } = useDialog();
 
-  const [selectedData, setSelectedData] = useState<DataEntity | null>(null);
+  const [selectedData, setSelectedData] = useState<ResultsEntity | null>(null);
 
   useEffect(() => {
     if (selectedData) {
@@ -47,7 +47,7 @@ const Home = () => {
         {data?.map((cardData) => (
           <ContentCard
             cardData={cardData}
-            key={cardData.content.id}
+            key={cardData.id}
             setSelectedData={setSelectedData}
           />
         ))}

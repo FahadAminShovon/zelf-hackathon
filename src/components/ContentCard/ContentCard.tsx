@@ -1,17 +1,22 @@
 import SvgComment from '../../assets/SvgComment';
 import SvgLike from '../../assets/SvgLike';
 import SvgShare from '../../assets/SvgShare';
-import { DataEntity } from '../../pages/Home/data.types';
+import { ResultsEntity } from '../../pages/Home/data.types';
 import { formatNumber } from '../../utils/helper';
 import CreatorAvatar from '../CreatorAvatar/CreatorAvatar';
 import Platform from '../Platform/Platform';
 import styles from './contentCard.module.css';
 
 type PropType = {
-  cardData: DataEntity;
-  setSelectedData: React.Dispatch<React.SetStateAction<DataEntity | null>>;
+  cardData: ResultsEntity;
+  setSelectedData: React.Dispatch<React.SetStateAction<ResultsEntity | null>>;
 };
 const ContentCard = ({ cardData, setSelectedData }: PropType) => {
+  const authorData = Array.isArray(cardData?.author?.data)
+    ? cardData?.author?.data?.[0]
+    : cardData.author?.data;
+  const stats = cardData?.data?.stats?.digg_counts;
+
   return (
     <div className={styles.container}>
       <div className={styles.thumbNailContainer}>
@@ -20,30 +25,33 @@ const ContentCard = ({ cardData, setSelectedData }: PropType) => {
           onClick={() => setSelectedData(cardData)}
         >
           <img
-            src={cardData.content.thumbnail_url}
+            src={cardData.data?.media.urls?.[0] ?? ''}
             className={styles.thumbnail}
           />
         </button>
         <div className={styles.creatorContainer}>
-          {cardData.creator.profile_picture_url && (
-            <CreatorAvatar src={cardData.creator.profile_picture_url} />
+          {authorData?.avatar?.urls?.[0] && (
+            <CreatorAvatar src={authorData?.avatar?.urls?.[0]} />
           )}
-          <span className={styles['line-clamp']}>{cardData.creator.name}</span>
-          <Platform platform={cardData.content.content_platform} />
+          <span className={styles['line-clamp']}>
+            {authorData?.info?.name ?? ''}
+          </span>
+          <Platform platform={authorData?.info?.platform} />
         </div>
       </div>
       <div className={styles.engagementContainer}>
         <span className={styles.engagement}>
           <SvgLike />
-          {formatNumber(cardData.content.likes)}
+          {formatNumber(stats?.likes?.count ?? 0)}
         </span>
         <span className={styles.engagement}>
           <SvgComment />
-          {formatNumber(cardData.content.comments)}
+          {formatNumber(stats?.comments?.count ?? 0)}
         </span>
         <span className={styles.engagement}>
           <SvgShare />
-          {formatNumber(cardData.content.shares)}
+          {/* {formatNumber(cardData.content.shares)} */}
+          N/A
         </span>
       </div>
     </div>

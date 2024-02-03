@@ -1,51 +1,93 @@
 export interface TableData {
-  page: number;
-  next: number;
-  data?: DataEntity[] | null;
-  total_contents: number;
-  page_size: number;
+  count: number;
+  next: string;
+  previous?: null;
+  results?: ResultsEntity[] | null;
 }
-export interface DataEntity {
-  creator: Creator;
-  content: Content;
-}
-export interface Creator {
+export interface ResultsEntity {
   id: number;
-  followers: number;
+  author: Author;
+  unique_id: number;
+  data?: Data;
+}
+export interface Author {
+  id: number;
+  unique_id: number;
   username: string;
-  external_id: string;
-  external_url: string;
-  name: string;
-  email: string;
-  platform: string;
-  profile_text: string;
-  profile_picture_url: string;
-  follower_count: string;
-  active_content_count?: string | null;
+  data?: DataEntityOrData[] | null | DataEntityOrData;
 }
-
-export type PlatformType = 'instagram' | 'tiktok';
-export interface Content {
+export interface DataEntityOrData {
+  unique_id: number;
+  unique_uuid: string;
+  origin_unique_id: string;
+  info: Info;
+  username: string;
+  stats?: Stats;
+  avatar: Avatar;
+  texts: Texts;
+}
+export interface Info {
+  name: string;
+  platform: 'instagram' | 'tiktok';
+}
+export interface Stats {
+  digg_count: DiggCount;
+}
+export interface DiggCount {
+  followers: Followers;
+}
+export interface Followers {
   id: number;
-  uuid: string;
-  account: number;
-  external_id: string;
-  external_url: string;
+  count: string;
+}
+export interface Avatar {
+  urls?: string[] | null;
+}
+export interface Texts {
+  profile_text: string;
+}
+export interface Data {
+  unique_id: number;
+  unique_uuid: string;
+  origin_unique_id: string;
+  creation_info: CreationInfo;
+  author: Author1;
+  context: Context;
+  origin_details: OriginDetails;
+  media: Media;
+  stats: Stats1;
+}
+export interface CreationInfo {
+  created_at: string;
   timestamp: string;
-  title: string;
-  text: string;
-  thumbnail_url: string;
-  content_platform: PlatformType;
-  content_type?: null;
-  content_form: 'IMAGE' | 'VIDEO';
-  likes: number;
-  comments: number;
-  views: number;
-  shares: number;
-  total_engagement: number;
-  engagement_of_views: number;
-  engagement_of_followers: number;
-  creator?: null;
-  creator_follower_count?: number | null;
-  creator_active_content_count?: number | null;
+}
+export interface Author1 {
+  id: number;
+  username: string;
+}
+export interface Context {
+  main_text: string;
+  token_count: number;
+  char_count: number;
+  tag_count: number;
+}
+export interface OriginDetails {
+  origin_platform: string;
+  origin_url: string;
+}
+export interface Media {
+  urls?: string[] | null;
+  media_type: string;
+}
+export interface Stats1 {
+  digg_counts: DiggCounts;
+}
+export interface DiggCounts {
+  likes: LikesOrViewsOrComments;
+  views: LikesOrViewsOrComments;
+  comments: LikesOrViewsOrComments;
+}
+export interface LikesOrViewsOrComments {
+  id: number;
+  count: number;
 }

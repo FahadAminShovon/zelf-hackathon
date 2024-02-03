@@ -3,11 +3,9 @@ import { getContent } from '../../utils/apiRoutes';
 import { TableData } from './data.types';
 
 const defaultTableData: TableData = {
-  page: 1,
-  next: 2,
-  data: null,
-  total_contents: 0,
-  page_size: 10,
+  next: '',
+  results: [],
+  count: 0,
 };
 
 export const useData = () => {

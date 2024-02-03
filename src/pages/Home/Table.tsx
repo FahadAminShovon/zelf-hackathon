@@ -1,4 +1,4 @@
-import { DataEntity } from './data.types';
+import { ResultsEntity } from './data.types';
 import {
   calculateEngagementRate,
   formatDate,
@@ -10,8 +10,8 @@ import CreatorAvatar from '../../components/CreatorAvatar/CreatorAvatar';
 import Platform from '../../components/Platform/Platform';
 
 type PropType = {
-  data: DataEntity[];
-  setSelectedData: React.Dispatch<React.SetStateAction<DataEntity | null>>;
+  data: ResultsEntity[];
+  setSelectedData: React.Dispatch<React.SetStateAction<ResultsEntity | null>>;
 };
 const Table = ({ data, setSelectedData }: PropType) => {
   if (data.length === 0) return <>No Data Found</>;
@@ -33,17 +33,30 @@ const Table = ({ data, setSelectedData }: PropType) => {
       </thead>
       <tbody>
         {data?.map((tData) => {
-          const { content, creator } = tData;
+          // const { content, creator } = tData;
+          const authorData = Array.isArray(tData?.author?.data)
+            ? tData?.author?.data?.[0]
+            : tData.author?.data;
+          const stats = tData?.data?.stats?.digg_counts;
+
+          const totalEngagement =
+            (stats?.comments?.count ?? 0) + (stats?.likes?.count ?? 0);
+          const engatementRate = calculateEngagementRate({
+            totalEngagement,
+            totalFollowers:
+              authorData?.stats?.digg_count?.followers?.count ?? 0,
+          });
+
           return (
-            <tr key={content.id}>
+            <tr key={tData.id}>
               <td className={styles.timeStamp}>
-                {formatDate(content.timestamp)}
+                {formatDate(tData.data?.creation_info?.created_at ?? '')}
               </td>
               {/* took shortcut here, need to render svg depending on content form */}
               <td>
                 {/* can be handled with css , taking shortcut for now */}
                 <span className={styles.contentTitle}>
-                  {truncateSentence(content.title)}
+                  {truncateSentence(tData?.data?.context.main_text ?? '')}
                 </span>
               </td>
               <td>
@@ -51,25 +64,23 @@ const Table = ({ data, setSelectedData }: PropType) => {
                   <tbody>
                     <tr>
                       <td>
-                        <CreatorAvatar src={creator.profile_picture_url} />
+                        <CreatorAvatar
+                          src={authorData?.avatar.urls?.[0] ?? ''}
+                        />
                       </td>
-                      <td>{`@${creator.username}`}</td>
+                      <td>{`@${authorData?.username}`}</td>
                     </tr>
                   </tbody>
                 </table>
               </td>
               <td>
-                <Platform platform={content.content_platform} />
+                <Platform platform={authorData?.info?.platform} />
               </td>
-              <td>{formatNumber(content.likes)}</td>
-              <td>{formatNumber(content.total_engagement)}</td>
 
-              <td>
-                {calculateEngagementRate({
-                  totalEngagement: content.total_engagement,
-                  totalFollowers: creator.follower_count,
-                })}
-              </td>
+              <td>{formatNumber(stats?.views?.count ?? '')}</td>
+              <td>{formatNumber(totalEngagement)}</td>
+              <td>{engatementRate}</td>
+
               <td
                 onClick={() => {
                   setSelectedData(tData);
