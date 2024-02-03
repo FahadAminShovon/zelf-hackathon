@@ -5,17 +5,21 @@ import styles from './contentCard.module.css';
 
 type PropType = {
   cardData: DataEntity;
+  setSelectedData: React.Dispatch<React.SetStateAction<DataEntity | null>>;
 };
-const ContentCard = ({ cardData }: PropType) => {
+const ContentCard = ({ cardData, setSelectedData }: PropType) => {
   return (
     <div className={styles.container}>
       <div className={styles.thumbNailContainer}>
-        <a href='' className={styles.cardImage}>
+        <button
+          className={styles.cardImage}
+          onClick={() => setSelectedData(cardData)}
+        >
           <img
             src={cardData.content.thumbnail_url}
             className={styles.thumbnail}
           />
-        </a>
+        </button>
         <div className={styles.creatorContainer}>
           {cardData.creator.profile_picture_url && (
             <CreatorAvatar src={cardData.creator.profile_picture_url} />

@@ -33,6 +33,28 @@ export function formatDate(timestamp: string): string {
   return `${monthNames[monthIndex]} ${day}`;
 }
 
-// Example usage:
-const formattedDate = formatDate('2023-05-04T21:16:55Z');
-console.log(formattedDate); // Output: "May 04"
+interface EngagementProps {
+  totalEngagement: string | number;
+  totalFollowers: string | number;
+}
+
+export function calculateEngagementRate({
+  totalEngagement,
+  totalFollowers,
+}: EngagementProps): string {
+  const engagement =
+    typeof totalEngagement === 'string'
+      ? parseFloat(totalEngagement)
+      : totalEngagement;
+  const followers =
+    typeof totalFollowers === 'string'
+      ? parseFloat(totalFollowers)
+      : totalFollowers;
+
+  if (followers === 0) {
+    return '0%'; // To avoid division by zero
+  }
+
+  const engagementRate = (engagement / followers) * 100;
+  return engagementRate.toFixed(2) + '%';
+}

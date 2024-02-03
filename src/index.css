@@ -100,8 +100,13 @@ dialog {
   margin: 0;
   border: none;
   background-color: transparent;
+  width: min(90%, 1336px);
 }
 
 dialog::backdrop {
   background-color: rgba(128, 128, 128, 0.4);
+}
+
+button {
+  all: unset;
 }
