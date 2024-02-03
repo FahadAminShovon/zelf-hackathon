@@ -13,6 +13,11 @@ const ModalCard = ({
 }) => {
   return (
     <div className={style.container}>
+      {/* <button className={`${style.chevronBtn}`}>
+
+			// can be implmented finding the current content index and updating previous selected data
+        <SvgLeft />
+      </button> */}
       <div className={style.imageContainer}>
         <img
           src={cardData.content.thumbnail_url}
@@ -50,6 +55,10 @@ const ModalCard = ({
           />
         </div>
       </div>
+      {/* <button className={`${style.chevronBtn}`}>
+			// can be implmented finding the current content index and updating next selected data
+        <SvgRight />
+      </button> */}
     </div>
   );
 };

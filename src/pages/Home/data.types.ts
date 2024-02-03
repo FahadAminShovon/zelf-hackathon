@@ -37,7 +37,7 @@ export interface Content {
   thumbnail_url: string;
   content_platform: PlatformType;
   content_type?: null;
-  content_form: string;
+  content_form: 'IMAGE' | 'VIDEO';
   likes: number;
   comments: number;
   views: number;

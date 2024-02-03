@@ -58,3 +58,12 @@ export function calculateEngagementRate({
   const engagementRate = (engagement / followers) * 100;
   return engagementRate.toFixed(2) + '%';
 }
+
+export function truncateSentence(sentence: string): string {
+  if (sentence.length > 20) {
+    const truncatedSentence = sentence.substring(0, 20).trim() + '...';
+    return truncatedSentence;
+  } else {
+    return sentence;
+  }
+}

@@ -4,6 +4,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   --card_content_padding: 32px;
+  position: relative;
 }
 
 .imageContainer {

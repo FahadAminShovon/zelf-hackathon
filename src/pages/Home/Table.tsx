@@ -3,6 +3,7 @@ import {
   calculateEngagementRate,
   formatDate,
   formatNumber,
+  truncateSentence,
 } from '../../utils/helper';
 import styles from './table.module.css';
 import CreatorAvatar from '../../components/CreatorAvatar/CreatorAvatar';
@@ -39,7 +40,12 @@ const Table = ({ data, setSelectedData }: PropType) => {
                 {formatDate(content.timestamp)}
               </td>
               {/* took shortcut here, need to render svg depending on content form */}
-              <td>{content.content_form}</td>
+              <td>
+                {/* can be handled with css , taking shortcut for now */}
+                <span className={styles.contentTitle}>
+                  {truncateSentence(content.title)}
+                </span>
+              </td>
               <td>
                 <table>
                   <tbody>
