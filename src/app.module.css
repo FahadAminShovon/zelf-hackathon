@@ -1,0 +1,10 @@
+.overAll {
+  height: 100%;
+  background-color: var(--background_color);
+}
+
+.homeContainer {
+  margin-top: 32px;
+  padding-inline: var(--container_padding_x);
+  height: 100%;
+}

@@ -1,0 +1,10 @@
+.container {
+  background-color: var(--secondary);
+  height: var(--header_footer_height);
+  position: sticky;
+  bottom: 0;
+  margin-inline: calc(-1 * var(--container_padding_x));
+  padding-inline: var(--container_padding_x);
+  display: flex;
+  align-items: center;
+}

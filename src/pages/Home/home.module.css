@@ -1,0 +1,4 @@
+.container {
+  margin-top: var(--vertical_gap);
+  height: 100%;
+}

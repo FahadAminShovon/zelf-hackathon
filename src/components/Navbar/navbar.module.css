@@ -1,0 +1,14 @@
+.container {
+  height: var(--header_footer_height);
+  background-color: var(--secondary);
+  display: grid;
+  padding-inline: var(--container_padding_x);
+  position: sticky;
+  top: 0;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
